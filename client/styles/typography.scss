@@ -1,0 +1,55 @@
+@mixin font($font-family: "kaisei", $font-weight: normal, $font-size: 16px) {
+    font-family: $font-family;
+    font-weight: $font-weight;
+    font-size: $font-size;
+}
+
+@mixin ja-normal-12() {
+    @include font($font-weight: normal, $font-size: 12px);
+}
+@mixin ja-normal-16() {
+    @include font($font-weight: normal, $font-size: 16px);
+}
+@mixin ja-normal-20() {
+    @include font($font-weight: normal, $font-size: 20px);
+}
+@mixin ja-normal-24() {
+    @include font($font-weight: normal, $font-size: 24px);
+}
+@mixin ja-normal-28() {
+    @include font($font-weight: normal, $font-size: 28px);
+}
+@mixin ja-normal-32() {
+    @include font($font-weight: normal, $font-size: 32px);
+}
+@mixin ja-normal-36() {
+    @include font($font-weight: normal, $font-size: 36px);
+}
+@mixin ja-normal-40() {
+    @include font($font-weight: normal, $font-size: 40px);
+}
+
+@mixin ja-bold-12() {
+    @include font($font-weight: bold, $font-size: 12px);
+}
+@mixin ja-bold-16() {
+    @include font($font-weight: bold, $font-size: 16px);
+}
+@mixin ja-bold-20() {
+    @include font($font-weight: bold, $font-size: 20px);
+}
+@mixin ja-bold-24() {
+    @include font($font-weight: bold, $font-size: 24px);
+}
+@mixin ja-bold-28() {
+    @include font($font-weight: bold, $font-size: 28px);
+}
+@mixin ja-bold-32() {
+    @include font($font-weight: bold, $font-size: 32px);
+}
+@mixin ja-bold-36() {
+    @include font($font-weight: bold, $font-size: 36px);
+}
+@mixin ja-bold-40() {
+    @include font($font-weight: bold, $font-size: 40px);
+}
