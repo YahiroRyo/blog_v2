@@ -1,5 +1,8 @@
-@import "./reset.scss";
-
+@use "./variables.scss" as var;
+  
+body {
+  background-color: var.$color-white;
+}
 .inner {
   width: 80%;
   margin: 0 auto;
