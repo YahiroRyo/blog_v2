@@ -1,0 +1,11 @@
+.create {
+    margin-top: 50px;
+    margin-bottom: 50px;
+    &__form {
+        margin-top: 30px;
+        &__input,
+        &__submit {
+            margin-top: 20px;
+        }
+    }
+}

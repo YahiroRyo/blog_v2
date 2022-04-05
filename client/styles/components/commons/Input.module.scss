@@ -1,7 +1,8 @@
 @use "../../typography.scss" as typo;
 @use "../../variables.scss" as var;
 
-.input {
+.input,
+.textarea {
     @include typo.ja-bold-16;
     background-color: #fff;
     border-radius: 5px;
@@ -9,6 +10,8 @@
     color: var.$color-black;
     padding: 10px;
     transition: .3s;
+    letter-spacing: 1px;
+    line-height: 1.5;
     width: 100%;
     &::placeholder {
         color: var.$color-gray-light;
@@ -16,6 +19,9 @@
     &:focus {
         border: 2px solid var.$color-black;
     }
+}
+.textarea {
+    height: 500px;
 }
 
 .button {
