@@ -5,6 +5,10 @@ import CommonMeta from "../../../components/commons/CommonMeta";
 const Works = () => {
     const router = useRouter();
     const {pageNumber} = router.query;
+    let axiosPageNumber = parseInt(pageNumber as string);
+    if (!axiosPageNumber) {
+        axiosPageNumber = 1;
+    }
 
     return (
         <>
