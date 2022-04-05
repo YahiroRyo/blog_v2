@@ -4,3 +4,22 @@
   width: 80%;
   margin: 0 auto;
 }
+
+@font-face {
+  font-family: "kaisei";
+  font-weight: lighter;
+  src: url('../assets/fonts/KaiseiDecol-Medium.ttf');
+  font-display: swap;
+}
+@font-face {
+  font-family: "kaisei";
+  font-weight: normal;
+  src: url('../assets/fonts/KaiseiDecol-Regular.ttf');
+  font-display: swap;
+}
+@font-face {
+  font-family: "kaisei";
+  font-weight: bold;
+  src: url('../assets/fonts/KaiseiDecol-Bold.ttf');
+  font-display: swap;
+}
