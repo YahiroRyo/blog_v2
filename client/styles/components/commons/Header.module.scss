@@ -1,0 +1,17 @@
+@use "../../typography.scss" as typo;
+@use "../../variables.scss" as var;
+
+.header {
+    background-color: #fff;
+    border-bottom: 5px solid var.$color-gray-light;
+    height: 150px;
+    &__inner {
+        align-items: center;
+        display: flex;
+        height: 100%;
+        &__title {
+            @include typo.ja-bold-32;
+            color: var.$color-black;
+        }
+    }
+}
