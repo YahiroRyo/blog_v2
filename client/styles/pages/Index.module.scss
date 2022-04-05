@@ -1,0 +1,45 @@
+@use "../../styles/typography.scss" as typo;
+@use "../../styles/variables.scss" as var;
+
+.index {
+    &__main {
+        &__profile {
+            margin: 50px auto 100px auto;
+            width: 80%;
+            &__icon {
+                display: block;
+                margin: 10px auto;
+                width: 75px;
+                height: 75px;
+                position: relative;
+                &:after {
+                    content: "";
+                    position: absolute;
+                    width: calc(100% + 50px);
+                    height: calc(100% + 50px);
+                    padding: 10px;
+                    border-radius: 50%;
+                    box-shadow: 0 0 10px rgba(var.$color-black, .4);
+                    transform: translate(-50%, -50%);
+                    background-color: #fff;
+                    top: 50%;
+                    left: 50%;
+                    z-index: -1;
+                }
+            }
+            &__sns {
+                align-items: center;
+                display: flex;
+                justify-content: center;
+                gap: 50px;
+                margin: 50px 0;
+            }
+            &__description {
+                @include typo.ja-bold-20;
+                color: var.$color-black;
+                letter-spacing: 2px;
+                line-height: 1.5;
+            }
+        }
+    }
+}
