@@ -1,23 +1,20 @@
 import { useRouter } from "next/router";
-import {Article, ArticleWrapper} from "../../../components/commons/Article";
-import styles from "../../../styles/pages/Works.module.scss";
-import Title from "../../../components/commons/Title";
-import Str from "../../../utils/str";
+import Articles from "../../../components/commons/Articles";
+import CommonMeta from "../../../components/commons/CommonMeta";
 
 const Works = () => {
     const router = useRouter();
     const {pageNumber} = router.query;
+    let axiosPageNumber = parseInt(pageNumber as string);
+    if (!axiosPageNumber) {
+        axiosPageNumber = 1;
+    }
 
     return (
-        <div className={Str.joinClassName(styles.works, "inner")}>
-            <Title>実績一覧</Title>
-            <ArticleWrapper className={styles.works__articleWrapper}>
-                <Article className={styles.works__articleWrapper__article} id={"11111"} title={"test"} description={"testaaaaaaaatestaaaaaaaatestaa\naaaaaatestaaaaaaaatestaaaaaaaatestaaaaaaaatestaaaaaaaatestaaaaaaaatestaaaa\naaaatestaaaaaaaatestaaaaaaaatestaaaaaaaatestaaaaaaaatestaaaaaaaatestaaaaaaaatestaaaaaaaate\nstaaaaaaaatestaaaaaaaatestaaaaaaaatestaaaaaaaatestaaaaaaaatestaaaaaaaatestaaaaaaaatestaaaaaaaatestaaaaaaa\natestaaaaa\naaat\nest\naaaaaaaatestaaaaaaaatesta\naaaaaaatestaaaaaaaatestaaaaaaaatestaaaaaaaatestaaaaaaaatestaaaaaaa\na"} createdAt={"2020/12/15"} />
-                <Article className={styles.works__articleWrapper__article} id={"11111"} title={"test"} description={"testaaaaaaaa"} createdAt={"2020/12/15"} />
-                <Article className={styles.works__articleWrapper__article} id={"11111"} title={"test"} description={"testaaaaaaaa"} createdAt={"2020/12/15"} />
-                <Article className={styles.works__articleWrapper__article} id={"11111"} title={"test"} description={"testaaaaaaaa"} createdAt={"2020/12/15"} />
-            </ArticleWrapper>
-        </div>
+        <>
+            <CommonMeta title="実績一覧" />
+            <Articles isWork={true} />
+        </>
     )
 }
 
