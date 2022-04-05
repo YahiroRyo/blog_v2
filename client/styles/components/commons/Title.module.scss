@@ -1,0 +1,7 @@
+@use "../../../styles/typography.scss" as typo;
+@use "../../../styles/variables.scss" as var;
+
+.title {
+    @include typo.ja-bold-24;
+    color: var.$color-black;
+}
