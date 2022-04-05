@@ -1,0 +1,17 @@
+@use "../../typography.scss" as typo;
+@use "../../variables.scss" as var;
+
+.formInput {
+    align-items: center;
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+    &__label {
+        @include typo.ja-bold-16;
+        color: var.$color-black;
+        width: 20%;
+    }
+    &__input {
+        width: 80%;
+    }
+}
