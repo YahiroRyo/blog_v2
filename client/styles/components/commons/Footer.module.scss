@@ -1,0 +1,17 @@
+@use "../../typography.scss" as typo;
+@use "../../variables.scss" as var;
+
+.footer {
+    background-color: var.$color-gray-light;
+    height: 150px;
+    &__inner {
+        align-items: center;
+        display: flex;
+        justify-content: center;
+        height: 100%;
+        &__title {
+            @include typo.ja-bold-24;
+            color: var.$color-black;
+        }
+    }
+}
