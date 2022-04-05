@@ -1,7 +1,9 @@
 <?php
 
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+
+use App\Http\Controllers\BlogController;
+use App\Http\Controllers\WorkController;
 
 /*
 |--------------------------------------------------------------------------
@@ -14,6 +16,25 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
-    return $request->user();
+Route::prefix("works")->group(function() {
+    Route::get("page/{page}",    [WorkController::class, "page"]);
+    Route::get("{id}",           [WorkController::class, "contents"]);
+});
+
+Route::prefix("blogs")->group(function() {
+    Route::get("page/{page}",    [BlogController::class, "page"]);
+    Route::get("{id}",           [BlogController::class, "contents"]);
+});
+
+Route::prefix("admin")->group(function() {
+    Route::prefix("works")->group(function() {
+        Route::post("create",   [WorkController::class, "create"]);
+        Route::post("edit",     [WorkController::class, "edit"]);
+        Route::post("delete",   [WorkController::class, "delete"]);
+    });
+    Route::prefix("blogs")->group(function() {
+        Route::post("create",   [BlogController::class, "create"]);
+        Route::post("edit",     [BlogController::class, "edit"]);
+        Route::post("delete",   [BlogController::class, "delete"]);
+    });
 });
