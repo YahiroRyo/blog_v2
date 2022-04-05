@@ -1,0 +1,10 @@
+.works {
+    margin-top: 50px;
+    margin-bottom: 50px;
+    &__articleWrapper {
+        margin-top: 30px;
+        &__article {
+            margin-bottom: 30px;
+        }
+    }
+}
