@@ -13,12 +13,20 @@ type Props = {
     title: string,
     description: string;
     createdAt: string;
+    isBlog?: boolean;
+    isWork?: boolean;
+    isAdmin?: boolean;
     className?: string;
 };
-export const Article = ({id, title, description, createdAt, className}: Props) => {
+export const Article = ({id, title, description, createdAt, className, isAdmin, isBlog, isWork}: Props) => {
+    let href = "";
+    href += isAdmin ? "/admin" : ""
+    href += isBlog ? "/blogs" : ""
+    href += isWork ? "/works" : ""
+    
     return (
         <li className={className}>
-            <Link href={`/blogs/${id}`}>
+            <Link href={`${href}/${id}`}>
                 <a>
                     <article className={styles.article}>
                         <h1 className={styles.article__title}>{title}</h1>
