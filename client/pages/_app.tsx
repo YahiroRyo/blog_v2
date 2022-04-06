@@ -4,6 +4,7 @@ import type { AppProps } from 'next/app'
 import Head from 'next/head'
 import Header from '../components/commons/Header';
 import Footer from '../components/commons/Footer';
+import Auth from '../components/Auth';
 
 const App = ({Component, pageProps}: AppProps) => {
   return (
@@ -15,6 +16,7 @@ const App = ({Component, pageProps}: AppProps) => {
       </Head>
       <Header />
       <main>
+        <Auth></Auth>
         <Component {...pageProps} />
       </main>
       <Footer />

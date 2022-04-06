@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AdminController;
 use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\BlogController;
@@ -27,14 +28,20 @@ Route::prefix("blogs")->group(function() {
 });
 
 Route::prefix("admin")->group(function() {
-    Route::prefix("works")->group(function() {
-        Route::post("create",   [WorkController::class, "create"]);
-        Route::post("edit",     [WorkController::class, "edit"]);
-        Route::post("delete",   [WorkController::class, "delete"]);
-    });
-    Route::prefix("blogs")->group(function() {
-        Route::post("create",   [BlogController::class, "create"]);
-        Route::post("edit",     [BlogController::class, "edit"]);
-        Route::post("delete",   [BlogController::class, "delete"]);
+    Route::post("login", [AdminController::class, "login"]);
+    Route::middleware("auth.admin")->group(function() {
+        Route::get("is_auth", function() {
+            return response(true);
+        });
+        Route::prefix("works")->group(function() {
+            Route::post("create",   [WorkController::class, "create"]);
+            Route::post("edit",     [WorkController::class, "edit"]);
+            Route::post("delete",   [WorkController::class, "delete"]);
+        });
+        Route::prefix("blogs")->group(function() {
+            Route::post("create",   [BlogController::class, "create"]);
+            Route::post("edit",     [BlogController::class, "edit"]);
+            Route::post("delete",   [BlogController::class, "delete"]);
+        }); 
     });
 });

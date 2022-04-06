@@ -23,16 +23,26 @@ const Work: NextPage<Props> = (props) => {
     const {id} = useRouter().query;
     
     const editWork = async() => {
+        const token = sessionStorage.getItem("token");
         await axios.post(`${Str.apiUrl()}/admin/works/edit`, {
             id: id,
             title: title,
             description: description,
             contents: markdown,
+        }, {
+            headers: {
+                Authorization: token!
+            }
         });
     }
     const deleteWork = async() => {
+        const token = sessionStorage.getItem("token");
         await axios.post(`${Str.apiUrl()}/admin/works/delete`, {
             id: id
+        }, {
+            headers: {
+                Authorization: token!
+            }
         });
     }
     

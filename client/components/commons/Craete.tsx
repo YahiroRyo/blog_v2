@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import styles from "../../styles/components/commons/Create.module.scss";
+import CommonMeta from "../../components/commons/CommonMeta";
 import Str from "../../utils/str";
 import FormInput from "./FormInput";
 import Input from "./Input";
@@ -16,10 +17,15 @@ const Create = ({isBlog, isWork}: Props) => {
         e.preventDefault();
         const article = isBlog ? "blogs" : "works";
         try {
+            const token = sessionStorage.getItem("token");
             await axios.post(`${Str.apiUrl()}/admin/${article}/create`, {
                 "title": title,
                 "description": description,
                 "contents": markdown,
+            },{
+                headers: {
+                    Authorization: token!
+                }
             });
             setMsg("作成しました。")
         } catch(e) {
@@ -34,6 +40,7 @@ const Create = ({isBlog, isWork}: Props) => {
     return (
         <div className={Str.joinClassName(styles.create, "inner")}>
             { msg ? <p>{msg}</p> : <></> }
+            <CommonMeta title={isBlog ? "ブログ作成" : isWork ? "実績作成" : ""} />
             <Title className={styles.create__title}>{isBlog ? "ブログ" : isWork ? "実績" : ""}作成</Title>
             <form className={styles.create__form} onSubmit={handleSubmit}>
                 <FormInput className={styles.create__form__input} name={"Title"} type={"text"} onChange={(e) => setTitle(e.target.value)} />
