@@ -14,6 +14,9 @@ class BlogController extends ArticleController
         parent::_create($request);
     }
     public function edit(BlogEditRequest $request) {
-        parent::_create($request);
+        $article = $this->model::where("id", $request->id)->first();
+        $article->fill($request->get_article_data());
+        $article->save();
+        return response([], 200);
     }
 }

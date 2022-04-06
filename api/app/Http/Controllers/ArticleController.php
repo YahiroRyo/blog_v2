@@ -22,6 +22,10 @@ class ArticleController extends Controller
         return response([], 200);
     }
 
+    public function contents(Request $_, string $id) {
+        return response($this->model::where("id", $id)->first());
+    }
+    
     public function page(Request $request) {
         return $this->model::paginate(15);
     }
