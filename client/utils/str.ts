@@ -6,4 +6,10 @@ export default class Str {
         });
         return classNames;
     }
+    public static apiUrl() {
+        if (process.env.NEXT_PUBLIC_API_URL === "http://blog-nginx:8080/api" && typeof window !== "undefined") {
+            return "http://localhost:8080/api";
+        }
+        return process.env.NEXT_PUBLIC_API_URL;
+    }
 }
