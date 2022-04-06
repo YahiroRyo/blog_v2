@@ -1,15 +1,9 @@
-import { useRouter } from "next/router";
+import { NextPage } from "next";
+import ArticleData from "../../../types/articleData";
 import Articles from "../../../components/commons/Articles";
 import CommonMeta from "../../../components/commons/CommonMeta";
 
-const Works = () => {
-    const router = useRouter();
-    const {pageNumber} = router.query;
-    let axiosPageNumber = parseInt(pageNumber as string);
-    if (!axiosPageNumber) {
-        axiosPageNumber = 1;
-    }
-
+const Works: NextPage = () => {
     return (
         <>
             <CommonMeta title="実績一覧" />

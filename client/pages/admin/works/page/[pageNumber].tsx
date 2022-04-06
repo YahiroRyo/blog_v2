@@ -1,11 +1,8 @@
-import { useRouter } from "next/router";
-import CommonMeta from "../../../../components/commons/CommonMeta";
+import { NextPage } from "next";
 import Articles from "../../../../components/commons/Articles";
+import CommonMeta from "../../../../components/commons/CommonMeta";
 
-const Works = () => {
-    const router = useRouter();
-    const {pageNumber} = router.query;
-
+const Works: NextPage = () => {
     return (
         <>
             <CommonMeta title="ブログ一覧" />
@@ -14,4 +11,4 @@ const Works = () => {
     )
 }
 
-export default Works;
+export default Works
