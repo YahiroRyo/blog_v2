@@ -16,6 +16,7 @@
     &__title {
         @include typo.ja-bold-24;
         color: var.$color-white;
+        width: 30%;
     }
     &__contents {
         height: 100%;

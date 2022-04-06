@@ -23,6 +23,12 @@ export const Article = ({id, title, description, createdAt, className, isAdmin, 
     href += isAdmin ? "/admin" : ""
     href += isBlog ? "/blogs" : ""
     href += isWork ? "/works" : ""
+
+    const getCreatedAt = () => {
+        const date = new Date(createdAt);
+        return `${date.getFullYear()}年 ${date.getMonth() + 1}月${date.getDate()}日`
+    }
+       
     
     return (
         <li className={className}>
@@ -39,7 +45,7 @@ export const Article = ({id, title, description, createdAt, className, isAdmin, 
                                 <div className={styles.article__contents__createdAt__icon}>
                                     <Image src="/icons/clock.svg" layout="fill" alt="clock" loading="lazy"/>
                                 </div>
-                                <span>{createdAt}</span>
+                                <span>{getCreatedAt()}</span>
                             </div>
                         </div>
                     </article>

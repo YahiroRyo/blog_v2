@@ -1,0 +1,14 @@
+.form {
+    margin: 100px auto;
+    &__button {
+        margin-right: 10px;
+        padding: 10px 30px;
+    }
+    &__inner {
+        margin-top: 30px;            
+        &__input,
+        &__submit {
+            margin-bottom: 30px;            
+        }
+    }
+}

@@ -6,7 +6,7 @@ import Blogs from './blogs/page/[pageNumber]'
 import styles from '../styles/pages/Index.module.scss'
 import Str from '../utils/str'
 
-const Index: NextPage = (pageProps) => {
+const Index: NextPage = () => {
   return (
     <>
       <CommonMeta title="トップページ" />
@@ -32,4 +32,4 @@ const Index: NextPage = (pageProps) => {
   )
 }
 
-export default Index
+export default Index;
