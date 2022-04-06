@@ -9,6 +9,7 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@vespaiach/axios-fetch-adapter": "^0.2.2",
     "axios": "^0.26.1",
     "dotenv": "^16.0.0",
     "next": "12.1.4",

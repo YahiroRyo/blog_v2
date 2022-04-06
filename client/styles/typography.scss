@@ -53,3 +53,9 @@
 @mixin ja-bold-40() {
     @include font($font-weight: bold, $font-size: 40px);
 }
+@mixin ja-bold-44() {
+    @include font($font-weight: bold, $font-size: 44px);
+}
+@mixin ja-bold-48() {
+    @include font($font-weight: bold, $font-size: 48px);
+}
