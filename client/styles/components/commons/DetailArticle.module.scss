@@ -1,0 +1,108 @@
+@use "../../typography.scss" as typo;
+@use "../../variables.scss" as var;
+
+.markdown {
+    @include typo.ja-normal-16;
+    background-color: #fff;
+    padding: 25px 50px;
+    width: 50%;
+    &__title {
+        font-size: 48px !important;
+    }
+    &__date {
+        align-items: center;
+        display: flex;
+        gap: 10px;
+        &__icon {
+            position: relative;
+            width: 20px;
+            height: 20px;
+        }
+        &__text {
+            opacity: .8;
+        }
+    }
+    
+    $fs: 40px;
+    @for $i from 1 to 7 {
+        & h#{$i} {
+            @include typo.font($font-weight: bold, $font-size: $fs);
+            margin: 20px 0;
+        }
+        $fs: $fs - 8;
+    }
+    & h2 {
+        position: relative;
+        margin: 40px 0 20px;
+        &:after {
+            content: "";
+            background-color: var.$color-black;
+            position: absolute;
+            width: 100%;
+            height: 1px;
+            bottom: -10px;
+            left: 0;
+        }
+    }
+    & blockquote {
+        position: relative;
+        padding: 10px 15px 10px 60px;
+        box-sizing: border-box;
+        font-style: italic;
+        background: darken(var.$color-white, 10);
+        color: var.$color-black;
+        margin: 10px 0;
+        &:before {
+            background-color: var.$color-gray-light;
+            border-radius: 5px;
+            content: "";
+            height: 100%;
+            left: 0;
+            position: absolute;
+            top: 0;
+            width: 10px;
+        }
+        & p {
+            padding: 0;
+            margin: 10px 0;
+            letter-spacing: 1;
+            line-height: 1.7;
+        }
+    }
+    
+    & li {
+        padding: 2px 0;
+        letter-spacing: 1.5px;
+    }
+    & ul {
+        margin: 10px 0;
+        & li {
+            &:before {
+                content: "・";
+            }
+        }
+    }
+
+    & ol {
+        margin: 10px 0;
+        counter-reset: item;
+        list-style-type: none;
+        & li:before {
+            content: counter(item)".";
+            counter-increment: item;
+            padding-right: .5em;
+        }
+    }
+    
+    & img {
+        display: block;
+        height: 300px;
+        border-radius: 10px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, .3);
+        margin: 10px 0;
+    }
+    
+    & a {
+        color: #4282B9;
+    }
+}
