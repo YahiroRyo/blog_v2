@@ -1,0 +1,71 @@
+service: blog-api
+
+provider:
+  name: aws
+  # The AWS region in which to deploy (us-east-1 is the default)
+  region: ap-northeast-1
+  # The stage of the application, e.g. dev, production, staging… ('dev' is the default)
+  stage: dev
+  runtime: provided.al2
+  memorySize: 512
+  environment:
+    APP_STORAGE: '/tmp'
+
+custom:
+  defaultStage: dev
+  profiles:
+    dev: sls-itg
+    stg: sls-stg
+    prd: sls-prd
+  environments: ${file(./config/config.yml)}
+  secret: ${file(./config/secret/.secret.yml)}
+  apigwBinary:
+    types:
+      - multipart/form-data
+
+package:
+  # Directories to exclude from deployment
+  exclude:
+    - node_modules/**
+    - public/storage
+    - resources/assets/**
+    - storage/**
+    - tests/**
+
+functions:
+  # This function runs the Laravel website/API
+  web:
+    handler: public/index.php
+    timeout: 28 # in seconds (API Gateway has a timeout of 29 seconds)
+    layers:
+      - ${bref-extra:gd-php-80}
+      - ${bref:layer.php-80-fpm}
+    events:
+      - http: 'ANY /'
+      - http: 'ANY /{proxy+}'
+      # This function lets us run artisan commands in Lambda
+    environment:
+      DB_PORT: ${self:custom.environments.DB_PORT}
+      DB_HOST: ${self:custom.environments.DB_HOST}
+      DB_DATABASE: ${self:custom.environments.DB_DATABASE}
+      DB_USERNAME: ${self:custom.secret.USER_NAME}
+      DB_PASSWORD: ${self:custom.secret.PASSWORD}
+
+  artisan:
+    handler: artisan
+    timeout: 120 # in seconds
+    layers:
+      - ${bref:layer.php-80-fpm}
+      - ${bref-extra:gd-php-80}
+      - ${bref:layer.console} # The "console" layer
+    environment:
+      DB_PORT: ${self:custom.environments.DB_PORT}
+      DB_HOST: ${self:custom.environments.DB_HOST}
+      DB_DATABASE: ${self:custom.environments.DB_DATABASE}
+      DB_USERNAME: ${self:custom.secret.USER_NAME}
+      DB_PASSWORD: ${self:custom.secret.PASSWORD}
+
+plugins:
+  # We need to include the Bref plugin
+  - ./vendor/bref/bref
+  - ./vendor/bref/extra-php-extensions
