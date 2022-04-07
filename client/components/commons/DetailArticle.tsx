@@ -1,7 +1,7 @@
 import ReactMarkdown from "react-markdown";
-import CommonMeta from "./CommonMeta";
 import styles from "../../styles/components/commons/DetailArticle.module.scss";
 import Image from "next/image";
+import Head from "next/head";
 import Str from "../../utils/str";
 
 type Props = {
@@ -19,7 +19,10 @@ const DetailArticle = ({title, description, contents, createdAt}: Props) => {
     
     return (
         <div className={Str.joinClassName(styles.markdown, "inner")}>
-            <CommonMeta title={title} description={description} />
+            <Head>
+                <meta name="description" content={description} />
+                <title>{title} | ヤッピー</title>
+            </Head>
             <h1 className={styles.markdown__title}>{title}</h1>
             <span className={styles.markdown__date}>
                 <div className={styles.markdown__date__icon}>
