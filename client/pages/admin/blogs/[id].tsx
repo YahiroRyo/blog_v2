@@ -23,16 +23,26 @@ const Blog: NextPage<Props> = (props) => {
     const {id} = useRouter().query;
     
     const editBlog = async() => {
+        const token = sessionStorage.getItem("token");
         await axios.post(`${Str.apiUrl()}/admin/blogs/edit`, {
             id: id,
             title: title,
             description: description,
             contents: markdown,
+        }, {
+            headers: {
+                Authorization: token!
+            }
         });
     }
     const deleteBlog = async() => {
+        const token = sessionStorage.getItem("token");
         await axios.post(`${Str.apiUrl()}/admin/blogs/delete`, {
             id: id
+        }, {
+            headers: {
+                Authorization: token!
+            }
         });
     }
     
