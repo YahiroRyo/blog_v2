@@ -8,10 +8,25 @@
     &__inner {
         align-items: center;
         display: flex;
+        justify-content: space-between;
         height: 100%;
         &__title {
             @include typo.ja-bold-32;
             color: var.$color-black;
+        }
+        &__routes {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            &__link {
+                @include typo.ja-bold-20;
+                color: #4282B9;
+                display: block;
+                transition: .1s;
+                &:hover {
+                    color: darken(#4282B9, 10);
+                }
+            }
         }
     }
 }
