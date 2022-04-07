@@ -9,7 +9,7 @@ import Str from '../utils/str'
 const Index: NextPage = () => {
   return (
     <>
-      <CommonMeta title="トップページ" />
+      <CommonMeta title="トップページ" description="専門学生 19歳です。WEBだったりAtCoderを最近はやってます。Vue.js/Nuxt.js/Next.js/Laravel/Golang使ってます。FPSや格ゲーが好きです。" />
       <div className={Str.joinClassName(styles.index__main, "inner")}>
         <div className={styles.index__main__profile}>
           <div className={styles.index__main__profile__icon} >
@@ -22,8 +22,7 @@ const Index: NextPage = () => {
           <p className={styles.index__main__profile__description}>
             専門学生 19歳です。<br/>
             WEBだったりAtCoderを最近はやってます。<br/>
-            学校の内部システムやコンテストへの参加を中心に活動しています。<br/>
-            このサイトは息抜きで作りました。Next.jsいいね。<br/>
+            FPSや格ゲーが好きです。<br/>
           </p>
         </div>
         <Blogs />

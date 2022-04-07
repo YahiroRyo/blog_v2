@@ -52,4 +52,5 @@ $app->singleton(
 |
 */
 
+$app->useStoragePath($_ENV['APP_STORAGE'] ?? $app->storagePath());
 return $app;
