@@ -26,7 +26,9 @@ const Auth = () => {
                 }
             })
         }
-        func();
+        try {
+            func();
+        } catch(e) {}
     });
 
     return <></>
