@@ -1,15 +1,17 @@
-import type { NextPage } from 'next'
-import CommonMeta from '../components/commons/CommonMeta'
+import type { GetServerSideProps, NextPage } from 'next'
+import Head from 'next/head'
 import Image from 'next/image'
 import Sns from '../components/commons/Sns'
-import Blogs from './blogs/page/[pageNumber]'
 import styles from '../styles/pages/Index.module.scss'
 import Str from '../utils/str'
 
 const Index: NextPage = () => {
   return (
     <>
-      <CommonMeta title="トップページ" description="専門学生 19歳です。WEBだったりAtCoderを最近はやってます。Vue.js/Nuxt.js/Next.js/Laravel/Golang使ってます。FPSや格ゲーが好きです。" />
+      <Head>
+        <title>トップページ | ヤッピー</title>
+        <meta name="description" content="専門学生 19歳です。WEBだったりAtCoderを最近はやってます。Vue.js/Nuxt.js/Next.js/Laravel/Golang使ってます。FPSや格ゲーが好きです。" />
+      </Head>
       <div className={Str.joinClassName(styles.index__main, "inner")}>
         <div className={styles.index__main__profile}>
           <div className={styles.index__main__profile__icon} >
@@ -25,7 +27,6 @@ const Index: NextPage = () => {
             FPSや格ゲーが好きです。<br/>
           </p>
         </div>
-        <Blogs />
       </div>
     </>
   )

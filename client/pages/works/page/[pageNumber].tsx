@@ -1,12 +1,13 @@
 import { NextPage } from "next";
-import ArticleData from "../../../types/articleData";
+import Head from 'next/head'
 import Articles from "../../../components/commons/Articles";
-import CommonMeta from "../../../components/commons/CommonMeta";
 
 const Works: NextPage = () => {
     return (
         <>
-            <CommonMeta title="実績一覧" />
+            <Head>
+                <title>実績一覧 | ヤッピー</title>
+            </Head>
             <Articles isWork={true} />
         </>
     )

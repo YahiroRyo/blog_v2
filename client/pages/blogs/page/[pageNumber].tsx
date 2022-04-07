@@ -1,11 +1,13 @@
 import { NextPage } from "next";
-import CommonMeta from "../../../components/commons/CommonMeta";
+import Head from 'next/head'
 import Articles from "../../../components/commons/Articles";
 
 const Blogs: NextPage = () => {
     return (
         <>
-            <CommonMeta title="ブログ一覧" />
+            <Head>
+                <title>ブログ一覧 | ヤッピー</title>
+            </Head>
             <Articles isBlog={true} />
         </>
     );

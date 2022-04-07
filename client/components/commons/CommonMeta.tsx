@@ -8,10 +8,9 @@ type Props = {
 }
 
 const CommonMeta = ({title, description}: Props) => {
-    const templateTitle = " | ヤッピー";
     return (
         <Head>
-            <title>{title}{templateTitle}</title>
+            <title>{title} | ヤッピー</title>
             <meta name="description" content={description} />
         </Head>
     );
