@@ -3,6 +3,7 @@
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
+use Utils\PutFile;
 
 class WorkCreateRequest extends FormRequest
 {
@@ -20,8 +21,12 @@ class WorkCreateRequest extends FormRequest
         return $this->only(
             "title",
             "description",
-            "contents"
-        );
+            "contents",
+        )+$this->get_thumbnail();
+    }
+
+    private function get_thumbnail() {
+        return ["thumbnail" => PutFile::put_image($this->thumbnail)];
     }
 
     /**
@@ -35,6 +40,7 @@ class WorkCreateRequest extends FormRequest
             "title" => ["required", "max:100"],
             "description" => ["required", "max:1000"],
             "contents" => ["required", "max:15000"],
+            "thumbnail" => ["required", "max:5000"],
         ];
     }
 }

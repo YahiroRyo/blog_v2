@@ -17,7 +17,6 @@ class AdminAuthMiddleware
      */
     public function handle(Request $request, Closure $next)
     {
-        logs()->info($request->header("Authorization"));
         $token = Token::where("destroy", ">", date('Y-m-d H:i:s'))
                 ->where("token", $request->header("Authorization"))
                 ->first();

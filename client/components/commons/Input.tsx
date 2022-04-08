@@ -1,3 +1,4 @@
+import { useRef } from "react";
 import styles from "../../styles/components/commons/Input.module.scss";
 import Str from "../../utils/str";
 
@@ -12,6 +13,7 @@ type Props = {
 }
 
 const Input = ({id, className, type = "text", children, onChange, onClick, value}: Props) => {
+    const inputElement = useRef<HTMLInputElement>(null);
     let input = null;
 
     switch (type) {
@@ -20,6 +22,16 @@ const Input = ({id, className, type = "text", children, onChange, onClick, value
             break;
         case "textarea":
             input = <textarea id={id} onChange={onChange} value={value} className={Str.joinClassName(styles.textarea, className ? className : '')} />
+            break;
+        case "image":
+            input = (
+                <>
+                    <input onChange={onChange} accept={"image/jpg,image/png,image/jpeg"} ref={inputElement} style={{ display: 'none' }} type="file" />
+                    <div className={Str.joinClassName(styles.fileUpload, className ? className : '')} onClick={() => inputElement.current?.click()}>
+                        <p className={styles.fileUpload__text}>画像をアップロード</p>
+                    </div>
+                </>
+            );
             break;
         default:
             input = <input

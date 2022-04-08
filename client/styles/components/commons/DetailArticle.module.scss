@@ -16,6 +16,12 @@
     @include bp.mq(sm) {
         width: 100%;
     }
+    &__thumbnail {
+        width: 100%;
+        position: relative;
+        height: 500px;
+        margin: 20px 0;
+    }
     &__title {
         font-size: 48px !important;
         @include bp.mq(lg) {

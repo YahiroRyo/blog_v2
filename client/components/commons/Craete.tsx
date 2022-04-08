@@ -18,11 +18,12 @@ const Create = ({isBlog, isWork}: Props) => {
         const article = isBlog ? "blogs" : "works";
         try {
             const token = sessionStorage.getItem("token");
-            await axios.post(`${Str.apiUrl()}/admin/${article}/create`, {
-                "title": title,
-                "description": description,
-                "contents": markdown,
-            },{
+            const formData = new FormData();
+            formData.append("title", title);
+            formData.append("description", description);
+            formData.append("contents", markdown);
+            formData.append("thumbnail", thumbnail ? thumbnail : "");
+            await axios.post(`${Str.apiUrl()}/admin/${article}/create`, formData, {
                 headers: {
                     Authorization: token!
                 }
@@ -35,6 +36,7 @@ const Create = ({isBlog, isWork}: Props) => {
     const [title, setTitle] = useState("");
     const [description, setDescription] = useState("");
     const [markdown, setMarkdown] = useState("");
+    const [thumbnail, setThumbnail] = useState<File>();
     const [msg, setMsg] = useState("");
 
     return (
@@ -43,6 +45,11 @@ const Create = ({isBlog, isWork}: Props) => {
             <CommonMeta title={isBlog ? "ブログ作成" : isWork ? "実績作成" : ""} />
             <Title className={styles.create__title}>{isBlog ? "ブログ" : isWork ? "実績" : ""}作成</Title>
             <form className={styles.create__form} onSubmit={handleSubmit}>
+                <FormInput className={styles.create__form__input} name={"Thumbnail"} type={"image"} onChange={(e) => {
+                    const target = e.target as HTMLInputElement;
+                    if  (!target.files) return;
+                    setThumbnail(target.files[0])
+                }} />
                 <FormInput className={styles.create__form__input} name={"Title"} type={"text"} onChange={(e) => setTitle(e.target.value)} />
                 <FormInput className={styles.create__form__input} name={"Description"} type={"text"} onChange={(e) => setDescription(e.target.value)} />
                 <FormInput className={styles.create__form__input} name={"Markdown"} type={"textarea"} onChange={(e) => setMarkdown(e.target.value)} />

@@ -18,5 +18,6 @@ class Blog extends Model
         "title",
         "description",
         "contents",
+        "thumbnail",
     ];
 }

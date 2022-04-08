@@ -9,13 +9,15 @@ type Props = {
     description: string,
     contents: string,
     createdAt: string,
+    thumbnail?: string,
 };
 
-const DetailArticle = ({title, description, contents, createdAt}: Props) => {
+const DetailArticle = ({title, description, contents, createdAt, thumbnail}: Props) => {
     const getCreatedAt = () => {
         const date = new Date(createdAt);
         return `${date.getFullYear()}年 ${date.getMonth() + 1}月${date.getDate()}日`
     }
+    const htmlThumbnail = thumbnail ? <Image src={thumbnail} alt="サムネイル"  layout="fill" objectFit="contain"></Image> : <></>
     
     return (
         <div className={Str.joinClassName(styles.markdown, "inner")}>
@@ -30,6 +32,9 @@ const DetailArticle = ({title, description, contents, createdAt}: Props) => {
                 </div>
                 <span className={styles.markdown__date__text}>{getCreatedAt()}</span>
             </span>
+            <div className={styles.markdown__thumbnail}>
+                {htmlThumbnail}
+            </div>
             <ReactMarkdown>
                     {contents}
             </ReactMarkdown>
