@@ -8,15 +8,17 @@ type Props = {
     description: string,
     contents: string,
     createdAt: string,
+    thumbnail?: string,
 };
 
-const Blog: NextPage<Props> = ({title, description, contents, createdAt}) => {
+const Blog: NextPage<Props> = ({title, description, contents, createdAt, thumbnail}) => {
     return (
         <DetailArticle
             title={title}
             description={description}
             contents={contents}
             createdAt={createdAt}
+            thumbnail={thumbnail}
         />
     );
 }
@@ -26,6 +28,7 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
     let description = "";
     let contents = "";
     let createdAt = "";
+    let thumbnail = "";
     
     const {id} = context.query;
     try {
@@ -34,11 +37,13 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
             description: string,
             contents: string,
             created_at: string,
+            thumbnail: string
         }>(`${Str.apiUrl()}/blogs/${id}`);
         title = response.data.title;
         description = response.data.description;
         contents = response.data.contents;
         createdAt = response.data.created_at;
+        thumbnail = response.data.thumbnail;
     } catch(e) {
     }
     
@@ -48,6 +53,7 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
             description: description,
             contents: contents,
             createdAt: createdAt,
+            thumbnail: thumbnail,
         }
     }
 }

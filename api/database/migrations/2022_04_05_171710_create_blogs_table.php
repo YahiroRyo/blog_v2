@@ -17,7 +17,7 @@ return new class extends Migration
             $table->char('id', 26)->primary();
             $table->string("title", 100);
             $table->string("description", 1000);
-            $table->string("contents", 15000);
+            $table->text("contents");
             $table->timestamps();
         });
     }

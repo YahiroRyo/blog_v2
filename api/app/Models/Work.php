@@ -18,5 +18,6 @@ class Work extends Model
         "title",
         "description",
         "contents",
+        "thumbnail",
     ];
 }

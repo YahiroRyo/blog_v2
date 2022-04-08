@@ -15,6 +15,7 @@ type Props = {
 };
 
 const Blog: NextPage<Props> = (props) => {
+    const [thumbnail, setThumbnail] = useState<File>();
     const [title, setTitle] = useState(props.title);
     const [description, setDescription] = useState(props.description);
     const [markdown, setMarkdown] = useState(props.contents);
@@ -29,6 +30,7 @@ const Blog: NextPage<Props> = (props) => {
             title: title,
             description: description,
             contents: markdown,
+            thumbnail: thumbnail,
         }, {
             headers: {
                 Authorization: token!
@@ -51,6 +53,11 @@ const Blog: NextPage<Props> = (props) => {
             <Input className={styles.form__button} onClick={editBlog} type="button" id="edit">編集</Input>
             <Input className={styles.form__button} onClick={deleteBlog} type="button" id="delete">削除</Input>
             <form className={styles.form__inner} onSubmit={(e) => e.preventDefault()}>
+                <FormInput className={styles.form__inner__input} name={"Thumbnail"} type={"image"} onChange={(e) => {
+                    const target = e.target as HTMLInputElement;
+                    if  (!target.files) return;
+                    setThumbnail(target.files[0])
+                }} />
                 <FormInput className={styles.form__inner__input} value={title} name={"Title"} type={"text"} onChange={(e) => setTitle(e.target.value)} />
                 <FormInput className={styles.form__inner__input} value={description} name={"Description"} type={"text"} onChange={(e) => setDescription(e.target.value)} />
                 <FormInput className={styles.form__inner__input} value={markdown} name={"Markdown"} type={"textarea"} onChange={(e) => setMarkdown(e.target.value)} />
