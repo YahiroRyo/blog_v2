@@ -10,8 +10,10 @@
 シュッとAPI生やせるよね
 ### MySQL
 脳死(よくない)
+### vercel(Front)
+vercel無料でレスポンス早くてすごすぎんか？？
 ### AWS
-#### Lambda(Front, Back)
+#### Lambda(Back)
 Lambdaｻｲｷｮｳ!!!
 #### EC2(MySQL)
 あんま金かけたくないからとりえあずEC2
